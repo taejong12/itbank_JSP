@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문제 1</title>
+</head>
+<body>
+	<!-- 
+		actoin = "http://localhost:8080/" 이 생략
+		/quiz01 : 절대 경로 -> http://localhost:8080/quiz01
+		quiz01 : 상대 경로 -> 현재 URL의 경로에 이어쓴다.
+		http://localhost:8080/pro06/quiz/quiz01.html
+		http://localhost:8080/pro06/quiz/quiz01
+		url 은 절대 경로를 쓰는것을 권장한다.
+	 -->
+	<form method="get" action="/pro06/quiz01">
+		이름 : <input type="text" name="name"><br>
+		나이 : <input type="text" name="age"><br>
+		<input type="submit" value="전송">
+		<input type="reset" value="다시 입력">
+	</form>
+</body>
+</html>
