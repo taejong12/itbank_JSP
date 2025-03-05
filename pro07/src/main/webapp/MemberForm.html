@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입창</title>
+<script>
+	/**
+		문제 
+		아이디, 암호, 이름, 이메일을 입력 하고
+		유효성 검사 후 /member3 으로 
+		데이터를 전송하도록 구현
+	*/ 
+	function fn_submit(){
+		let frm = document.frm;
+		
+		let id = frm.id.value;
+		let pwd = frm.pwd.value;
+		let name = frm.name.value;
+		let email = frm.email.value;
+		
+		if (id.length == 0 || id == "") {
+			alert("아이디가 입력 되지 않았습니다.");
+			frm.id.focus();
+		} else if (pwd.length == 0 || pwd == "") {
+			alert("암호가 입력되지 않았습니다.");
+			frm.pwd.focus();
+		} else if (name.length == 0 || name == "") {
+			alert("이름이 입력되지 않았습니다.");
+			frm.name.focus();
+		} else if (email.length == 0 || email == "") {
+			alert("이메일이 입력되지 않았습니다.");
+			frm.email.focus();
+		} else {
+			frm.method="get";
+			frm.action="member3";
+			frm.submit();
+		}
+	}
+</script>
+</head>
+<body>
+	<form name="frm">
+		<table>
+			<tr>
+				<th colspan="2">
+					회원 가입창
+				</th>
+			</tr>
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id"></td>
+			</tr>
+			<tr>
+				<td>암호</td>
+				<td><input type="password" name="pwd"></td>
+			</tr>			
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="name"></td>
+			</tr>			
+			<tr>
+				<td>이메일</td>
+				<td><input type="email" name="email"></td>
+			</tr>	
+			<tr>
+				<td colspan="2">
+					<input type="button" onclick="fn_submit()"
+						value="회원가입">
+					<input type="reset" value="다시입력">
+				</td>
+			</tr>	
+			<input type="hidden" name="command" 
+					value="addMember">	
+	</form>
+</body>
+</html>

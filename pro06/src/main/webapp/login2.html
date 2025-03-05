@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>title</title>
+	<script>
+		function fm_submit() {
+			// name 값으로 form 을 가져오는 방법
+			let frm = document.frm;
+			
+			// form 안에 name 을 이용하여 태그 및 값 가져오는 방법
+			let user_id = frm.user_id.value;
+			let user_pw = frm.user_pw.value;
+			
+			if(user_id.length == 0 || user_id == ""){
+				alert("아이디 값이 입력되지 않았습니다.");
+				frm.user_id.focus();
+			} else if (user_pw.length == 0 || user_pw == ""){
+				alert("암호 값이 입력되지 않았습니다.");
+				frm.user_pw.focus();
+			} else {
+				frm.method="post";
+				frm.action="quiz04";
+				frm.submit();
+			}
+		}
+	</script>
+</head>
+<body>
+	<form name="frm">
+		아이디 : <input type="text" name="user_id"><br>
+		암호 : <input type="password" name="user_pw"><br>
+		<input type="button" onclick="fm_submit()" value="로그인">
+		<input type="reset" value="다시입력">
+	</form>
+</body>
+</html>
