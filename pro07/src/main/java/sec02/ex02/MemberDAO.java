@@ -1,6 +1,7 @@
 package sec02.ex02;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -78,6 +79,24 @@ public class MemberDAO {
 			con.close();
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+	}
+
+	public void delMember(String id) {
+		String sql = "delete from member where id=?";
+		
+		try {
+			con = dataFactory.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result >= 1) {
+				System.out.println("삭제완료");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
