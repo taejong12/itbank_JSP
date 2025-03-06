@@ -1,0 +1,44 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>자바스크립트 쿠키 사용</title>
+	<script>
+		window.onload = pageLoad;
+		
+		function pageLoad(){
+			let notShowPop = getCookieValue();
+			if(notShowPop != 'true') {
+				window.open("popup.html", "pop",
+				"width=400,height=500,history=no,resizable=no,status=no,scrollbars=yes,menubar=no");
+			}
+		}
+		
+		function getCookieValue(){
+			let result = "false";
+			if(document.cookie != "") {
+				let cookie = document.cookie.split(";");
+				for(let i=0;i<cookie.length;i++){
+					element = cookie[i].split("=");
+					value = element[0];
+					value = value.replace(/^\s*/, "");
+					if(value == "notShowPop") {
+						result = element[1];
+					}
+				}
+				return result;
+			}
+		}
+		
+		function deleteCookie(){
+			document.cookie = 
+				"notShowPop=false;path=/;expires=-1";
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<input type="button" value="쿠키삭제" 
+			onclick="deleteCookie()">
+	</form>	
+</body>
+</html>
